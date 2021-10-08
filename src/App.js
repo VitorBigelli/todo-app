@@ -1,24 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from 'react'
+import 'bootstrap/dist/css/bootstrap.css';
+import './assets/css/custom.css';
+import TodoList from './components/TodoList';
+import TaskInput from './components/TaskInput';
+import { TaskProvider, TaskContext } from './context/tasks-context'
+
+const types = {
+  0: 'Personal', 
+  1: 'Work'
+}
+
+const tasks = [
+  {
+    id: "1",
+    name: "Desafio SalesForce", 
+    done: false, 
+    type: 1,
+  }, 
+  {
+    id: "2",
+    name: "Documentar projeto", 
+    done: false, 
+    type: 1,
+  },
+  {
+    id: "3",
+    name: "Consertar chuveiro", 
+    done: false, 
+    type: 0,
+  }
+]
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <TaskProvider>
+      <header className="text-center py-5 px-1">
+        <h1>TO DO</h1> 
       </header>
-    </div>
+      <main className="container">
+        <div className="row">
+          <div className="col-12 text-center">
+            <TaskInput types={types} />
+          </div>
+        </div>
+        <div className="row">
+          { Object.entries(types).map( (type, index) => {
+            return (
+              <div className="col-6">
+                <TodoList key={index} type={type} />
+              </div>
+            )
+          })}
+        </div>
+      </main>
+    </TaskProvider>
   );
 }
 
