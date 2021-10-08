@@ -4,7 +4,7 @@ import { makeid } from '../../utils'
 
 const TaskInput = ({ types }) => {
 
-    const { state, dispatch } = useContext(TaskContext)
+    const { dispatch } = useContext(TaskContext)
 
     const [ input, updateInput ] = useState('')
     const [ type, updateType ] = useState(0)
@@ -22,6 +22,7 @@ const TaskInput = ({ types }) => {
             done: false 
         }
         dispatch( { type: 'add', value: task } )
+        updateInput('')
     }
 
     const handleTypeChange = (e) => {

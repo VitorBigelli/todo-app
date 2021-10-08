@@ -16,11 +16,12 @@ const Task = ({ task }) => {
     }
 
     return (
-        <div className={`task task-${task.type}`} htmlFor={task.id}>
+        <label className={`task task-${task.type}`} htmlFor={task.id}>
             <input type="checkbox" id={task.id} checked={isDone} onChange={toggleTaskStatus}></input>
+            <div className='checkmark'></div>
             <span> { task.name }  </span> 
             <button onClick={onDelete}> x </button>
-        </div>
+        </label>
     )
 
 }
