@@ -28,13 +28,28 @@ export const TaskContext = createContext({
 });
 
 export const TaskReducer = (state, action) => {
-  console.log(action)
     switch(action.type) {
         case 'add': {
             return { tasks: state.tasks.concat([ action.value ]) }
         }    
         case 'remove': {
             return { tasks: state.tasks.filter( (t) => t.id !== action.value.id ) }
+        }
+        case 'toggle': {
+            return { 
+              tasks: state.tasks.map( (t) => { 
+                if (t.id === action.value.id) return { ...t, done: !t.done } 
+                else return t  
+              }) 
+            }
+        }
+        case 'move': {
+            return { 
+              tasks: state.tasks.map( (t) => { 
+                if (t.id === action.value.id) return { ...t, type: t.type === 0 ? 1 : 0 } 
+                else return t  
+              }) 
+            }
         }
         default: {
             throw new Error(`Unhandled action type: ${action.type}`)

@@ -13,7 +13,7 @@ const TodoList = ({ type }) => {
         <>
             <h3>{ value } </h3> 
             {
-                tasks.filter( (t) => t.type == key ).map( (task, index) => {
+                tasks.sort( (a) => a.done ? 1 : -1 ).filter( (t) => t.type == key ).map( (task, index) => {
                     return <Task key={index} task={task} />
                 })
             }

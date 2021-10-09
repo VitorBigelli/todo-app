@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import logo from './assets/img/task.png'
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/custom.css';
 import TodoList from './components/TodoList';
@@ -15,7 +15,8 @@ function App() {
   return (
     <TaskProvider>
       <header className="text-center py-5 px-1">
-        <h1>TO DO</h1> 
+        <img src={logo} width="70px" />
+        <h1>Todo App</h1> 
       </header>
       <main className="container">
         <div className="row">

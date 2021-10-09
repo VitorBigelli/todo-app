@@ -19,7 +19,7 @@ const TaskInput = ({ types }) => {
     const { dispatch } = useContext(TaskContext)
 
     const [ input, updateInput ] = useState('')
-    const [ type, updateType ] = useState(null)
+    const [ type, updateType ] = useState('0')
 
     const handleTextChange = (e) => {
         const text = e.target.value
