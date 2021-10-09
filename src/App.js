@@ -10,28 +10,6 @@ const types = {
   1: 'Work'
 }
 
-const tasks = [
-  {
-    id: "1",
-    name: "Desafio SalesForce", 
-    done: false, 
-    type: 1,
-  }, 
-  {
-    id: "2",
-    name: "Documentar projeto", 
-    done: false, 
-    type: 1,
-  },
-  {
-    id: "3",
-    name: "Consertar chuveiro", 
-    done: false, 
-    type: 0,
-  }
-]
-
-
 function App() {
 
   return (
@@ -45,10 +23,11 @@ function App() {
             <TaskInput types={types} />
           </div>
         </div>
+        <hr/>
         <div className="row">
           { Object.entries(types).map( (type, index) => {
             return (
-              <div className="col-6">
+              <div className="col-6" key={index}>
                 <TodoList key={index} type={type} />
               </div>
             )

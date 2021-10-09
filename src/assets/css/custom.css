@@ -1,13 +1,15 @@
 .task {
   display: flex;
+  justify-content: space-between;
   text-align: left; 
   background-color: rgba(0, 0, 200, 0.25);
-  padding: 10px 5px;
+  padding: 15px;
   padding-left: 50px;
   margin-bottom: 10px;
   align-items: center;
   font-size: 12px;
   position: relative;
+  border-radius: 4px;
 }
 
 .task-0 {
@@ -27,15 +29,24 @@
   width: calc(100% - 50px);
 }
 
+.delete-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  opacity: 0.8;
+}
 
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
+  top: 15px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  background-color: #ffffff;
 }
 
 /* On mouse-over, add a grey background color */
@@ -71,4 +82,15 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.input-count {
+  position: absolute;
+  bottom: 0;
+  right: 75px;
+  font-size: 12px;
 }

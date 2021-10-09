@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { TaskContext } from '../../context/tasks-context'
+import { MdDelete } from 'react-icons/md'
 
 const Task = ({ task }) => {
 
@@ -20,7 +21,7 @@ const Task = ({ task }) => {
             <input type="checkbox" id={task.id} checked={isDone} onChange={toggleTaskStatus}></input>
             <div className='checkmark'></div>
             <span> { task.name }  </span> 
-            <button onClick={onDelete}> x </button>
+            <MdDelete onClick={onDelete} className="delete-btn" size={20} color="#333" /> 
         </label>
     )
 
