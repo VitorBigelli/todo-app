@@ -27,7 +27,7 @@ const Task = ({ task }) => {
                 <div className='checkmark'></div>
             </label>
             <span> { task.name }  </span>  
-            <CompareArrowsIcon onClick={onMove} className="delete-btn" size={20} color="#333" /> 
+            <CompareArrowsIcon onClick={onMove} className="delete-btn" size={20} color="#333"/> 
             <DeleteIcon onClick={onDelete} className="delete-btn" size={20} color="#333" />
         </div>
     )

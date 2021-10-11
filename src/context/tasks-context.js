@@ -1,5 +1,7 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer, useEffect } from 'react'
 import { makeid } from '../utils'
+
+export const localTasks = JSON.parse(localStorage.getItem('TODO@tasks')).tasks
 
 const defaultTasks = [
     {
@@ -59,10 +61,15 @@ export const TaskReducer = (state, action) => {
 
 
 export function TaskProvider({children}) {
-    const [state, dispatch] = useReducer(TaskReducer, { tasks: defaultTasks })
+    const [state, dispatch] = useReducer(TaskReducer, { tasks: localTasks || defaultTasks })
     // NOTE: you *might* need to memoize this value
     // Learn more in http://kcd.im/optimize-context
     const value = {state, dispatch}
+
+    useEffect(() => {
+      localStorage.setItem("TODO@tasks", JSON.stringify({ tasks: state.tasks }));
+    }, [ state ]);
+
     return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>
 }
 

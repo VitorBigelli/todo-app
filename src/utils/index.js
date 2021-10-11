@@ -1,4 +1,3 @@
-
 export const types = {
   '0': 'Pessoal',
   '1': 'Trabalho'
