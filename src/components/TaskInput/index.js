@@ -1,12 +1,17 @@
 import React, { useState, useContext } from 'react'
-import { TaskConsumer, TaskContext } from '../../context/tasks-context'
+import { TaskContext } from '../../context/tasks-context'
 import { makeid } from '../../utils'
 import { 
-    Button,
     ToggleButtonGroup,
     ToggleButton,
     Input
 } from '@material-ui/core';
+import {
+    Button,
+    FormControl,
+    InputGroup
+} from 'react-bootstrap'
+import { TypesContext } from '../../context/types-context';
 
 const InputCount = ({ text }) => {
     return ( 
@@ -14,12 +19,12 @@ const InputCount = ({ text }) => {
     )
 }
 
-const TaskInput = ({ types }) => {
+const TaskInput = () => {
 
     const { dispatch } = useContext(TaskContext)
 
     const [ input, updateInput ] = useState('')
-    const [ type, updateType ] = useState('0')
+    const { state: { type } } = useContext(TypesContext)
 
     const handleTextChange = (e) => {
         const text = e.target.value
@@ -42,26 +47,23 @@ const TaskInput = ({ types }) => {
         }
     }
 
-    const handleTypeChange = (e) => {
-        const value = e.target.value
-        updateType(value)
-    }
-
     return (
         <form onSubmit={handleSubmit} className="d-flex justify-content-around align-items-end position-relative pb-4">
-            <ToggleButtonGroup
-                color="primary"
-                exclusive
-                value={type}
-                onChange={handleTypeChange}
-            >
-                { Object.entries(types).map( (type, index) => {
-                    return <ToggleButton value={type[0]} key={index}> {type[1]} </ToggleButton>;
-                })}
-            </ToggleButtonGroup>
-            <Input onChange={handleTextChange} value={input} className="flex-grow mx-2" inputProps={{ maxLength: 100 }} />
             <InputCount text={input} />
-            <Button type="submit" variant='contained'> OK </Button>
+            <InputGroup className="mb-3 mx-auto">
+                <FormControl
+                    placeholder="Ex: Implementar TO DO App"
+                    aria-label="Ex: Implementar TO DO App"
+                    aria-describedby="task-input"
+                    onChange={handleTextChange}
+                    value={input}
+                    maxLength={100}
+                />
+                <Button variant="dark" id="button-addon2">
+                Criar
+                </Button>
+            </InputGroup>
+
         </form>
     )
 

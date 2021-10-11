@@ -4,6 +4,10 @@ h1 {
   font-family: "Cookie", sans-serif;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .task {
   display: flex;
   justify-content: space-between;
@@ -97,11 +101,23 @@ h1 {
 
 .input-count {
   position: absolute;
-  bottom: 0;
-  right: 75px;
+  top: 40px;
+  left: 5px;
   font-size: 12px;
 }
 
 .true {
   opacity: 0.4;
+}
+
+.theme-0 {
+  background-color: rgba(0, 200, 0, 0.15);
+}
+
+.theme-1 {
+  background-color: rgba(0, 0, 200, 0.15);
+}
+
+input[type='radio'] {
+  display: none;
 }

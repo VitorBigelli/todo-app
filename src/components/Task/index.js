@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { TaskContext } from '../../context/tasks-context'
 import DeleteIcon from '@material-ui/icons/Delete';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';

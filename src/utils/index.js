@@ -1,3 +1,9 @@
+
+export const types = {
+  '0': 'Pessoal',
+  '1': 'Trabalho'
+}
+
 export function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

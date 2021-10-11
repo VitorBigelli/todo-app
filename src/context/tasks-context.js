@@ -6,19 +6,19 @@ const defaultTasks = [
       id: makeid(),
       name: "Desafio SalesForce", 
       done: false, 
-      type: 1,
+      type: '1',
     }, 
     {
       id: makeid(),
       name: "Documentar projeto", 
       done: false, 
-      type: 1,
+      type: '1',
     },
     {
       id: makeid(),
       name: "Consertar chuveiro", 
       done: false, 
-      type: 0,
+      type: '0',
     }
   ]
   
@@ -46,7 +46,7 @@ export const TaskReducer = (state, action) => {
         case 'move': {
             return { 
               tasks: state.tasks.map( (t) => { 
-                if (t.id === action.value.id) return { ...t, type: t.type === 0 ? 1 : 0 } 
+                if (t.id === action.value.id) return { ...t, type: t.type === '0' ? '1' : '0' } 
                 else return t  
               }) 
             }

@@ -1,40 +1,44 @@
-import logo from './assets/img/task.png'
-import 'bootstrap/dist/css/bootstrap.css';
-import './assets/css/custom.css';
+import logo_1 from './assets/img/logo_1.png'
+import logo_2 from './assets/img/logo_2.png'
 import TodoList from './components/TodoList';
 import TaskInput from './components/TaskInput';
-import { TaskProvider, TaskContext } from './context/tasks-context'
-
-const types = {
-  0: 'Personal', 
-  1: 'Work'
-}
+import { TaskProvider } from './context/tasks-context'
+import { TypesContext } from './context/types-context'
+import Toggle from './components/Toggle';
+import { Col, Row, Container } from 'react-bootstrap';
+import { useContext } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import './assets/css/custom.css';
 
 function App() {
 
+  const { state: { type } } = useContext(TypesContext)
+
   return (
     <TaskProvider>
+    <main className={`theme-${type}`}>
       <header className="text-center py-5 px-1">
-        <img src={logo} width="70px" />
-        <h1>Todo App</h1> 
+        <h1>To Do App</h1> 
+        <img src={type === '0' ? logo_1 : logo_2 } width="70px" alt="Ícone de uma checklist" />
       </header>
-      <main className="container">
-        <div className="row">
-          <div className="col-12 text-center">
-            <TaskInput types={types} />
-          </div>
-        </div>
-        <hr/>
-        <div className="row">
-          { Object.entries(types).map( (type, index) => {
-            return (
-              <div className="col-6" key={index}>
-                <TodoList key={index} type={type} />
-              </div>
-            )
-          })}
-        </div>
-      </main>
+      <Container>
+        <Row className='pb-3'>
+          <Col className='text-center'>
+            <Toggle />        
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <TaskInput />  
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <TodoList />
+          </Col>
+        </Row>
+      </Container>
+    </main>
     </TaskProvider>
   );
 }
