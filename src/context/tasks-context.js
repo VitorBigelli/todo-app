@@ -53,6 +53,14 @@ export const TaskReducer = (state, action) => {
               }) 
             }
         }
+        case 'update': {
+            return { 
+              tasks: state.tasks.map( (t) => { 
+                if (t.id === action.value.id) return { ...action.value } 
+                else return t  
+              }) 
+            }
+        }
         default: {
             throw new Error(`Unhandled action type: ${action.type}`)
         }

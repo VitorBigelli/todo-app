@@ -16,29 +16,29 @@ function App() {
 
   return (
     <TaskProvider>
-    <main className={`theme-${type}`}>
-      <header className="text-center py-5 px-1">
-        <h1>To Do App</h1> 
-        <img src={type === '0' ? logo_1 : logo_2 } width="70px" alt="Ícone de uma checklist" />
-      </header>
-      <Container>
-        <Row className='pb-3'>
-          <Col className='text-center'>
-            <Toggle />        
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TaskInput />  
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-          <TodoList />
-          </Col>
-        </Row>
-      </Container>
-    </main>
+      <main className={`theme-${type}`}>
+        <header className="text-center py-5 px-1">
+          <h1>To Do App</h1> 
+          <img src={type === '0' ? logo_1 : logo_2 } width="70px" alt="Ícone de uma checklist" />
+        </header>
+        <Container>
+          <Row className='pb-3'>
+            <Col className='text-center'>
+              <Toggle />        
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <TaskInput />  
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+            <TodoList />
+            </Col>
+          </Row>
+        </Container>
+      </main>
     </TaskProvider>
   );
 }

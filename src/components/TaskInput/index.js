@@ -1,11 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { TaskContext } from '../../context/tasks-context'
 import { makeid } from '../../utils'
-import { 
-    ToggleButtonGroup,
-    ToggleButton,
-    Input
-} from '@material-ui/core';
 import {
     Button,
     FormControl,
@@ -19,11 +14,11 @@ const InputCount = ({ text }) => {
     )
 }
 
-const TaskInput = () => {
+const TaskInput = ({ defaultTask }) => {
 
     const { dispatch } = useContext(TaskContext)
 
-    const [ input, updateInput ] = useState('')
+    const [ input, updateInput ] = useState(defaultTask ? defaultTask.name : '')
     const { state: { type } } = useContext(TypesContext)
 
     const handleTextChange = (e) => {
@@ -35,12 +30,23 @@ const TaskInput = () => {
         e.preventDefault()
 
         if (!type) alert('Selecione uma classe para sua tarefa')
+
+        else if (defaultTask) {
+            const task = {
+                id: defaultTask.id,
+                name: input,
+                type: type,
+                done: defaultTask.done
+            }
+            dispatch( { type: 'update', value: task } )
+        }
+
         else {
             const task = {
                 id: makeid(),
                 name: input,
                 type: type,
-                done: false 
+                done: false
             }
             dispatch( { type: 'add', value: task } )
             updateInput('')
@@ -59,8 +65,8 @@ const TaskInput = () => {
                     value={input}
                     maxLength={100}
                 />
-                <Button variant="dark" id="button-addon2">
-                Criar
+                <Button variant="dark" id="button-addon2" type='submit'>
+                    { defaultTask ? 'Salvar' : 'Criar' }
                 </Button>
             </InputGroup>
 

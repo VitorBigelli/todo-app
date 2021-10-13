@@ -9,8 +9,11 @@ import { TypesContext } from "../../context/types-context";
 const Toggle = () => {
 
     const { state: { type }, dispatch } = useContext(TypesContext)
+
+    console.log(type)
     
     const handleTypeChange = () => {
+        console.log('Changing')
         dispatch({ type: 'toggle' })
     }
 
