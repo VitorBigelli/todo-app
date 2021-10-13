@@ -1,7 +1,7 @@
 import { createContext, useReducer, useEffect } from 'react'
 import { makeid } from '../utils'
 
-export const localTasks = JSON.parse(localStorage.getItem('TODO@tasks')).tasks
+export const localTasks = JSON.parse(localStorage.getItem('TODO@tasks'))
 
 const defaultTasks = [
     {
@@ -69,7 +69,7 @@ export const TaskReducer = (state, action) => {
 
 
 export function TaskProvider({children}) {
-    const [state, dispatch] = useReducer(TaskReducer, { tasks: localTasks || defaultTasks })
+    const [state, dispatch] = useReducer(TaskReducer, { tasks: localTasks ? localTasks.tasks : defaultTasks })
     // NOTE: you *might* need to memoize this value
     // Learn more in http://kcd.im/optimize-context
     const value = {state, dispatch}
