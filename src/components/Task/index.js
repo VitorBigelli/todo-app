@@ -13,7 +13,6 @@ const Task = ({ task }) => {
 
     const { dispatch } = useContext(TaskContext);
 
-    const [ showModal, toggleTaskModal ] = useState(false)
     const [ input, updateInput ] = useState(task.name)
     const [ isEditing, toggleEditor ] = useState(false)
 
@@ -43,7 +42,7 @@ const Task = ({ task }) => {
 
     return (
         <div className={`task task-${task.type} ${task.done}`} htmlFor={task.id}>
-            <div className='d-flex'>
+            <div className='d-flex align-items-center'>
                 <label htmlFor={task.id}>
                     <input type="checkbox" id={task.id} checked={task.done} onChange={toggleTaskStatus}></input>
                     <div className='checkmark'></div>
@@ -71,10 +70,13 @@ const Task = ({ task }) => {
                     </>
                 }
             </div>
-            <div>                
-                <CompareArrowsIcon onClick={onMove} className="delete-btn" size={20}  /> 
-                <DeleteIcon onClick={onDelete} className="delete-btn" size={20} />
-            </div>
+            { 
+                !isEditing &&
+                <div>                
+                    <CompareArrowsIcon onClick={onMove} className="delete-btn" size={20}  /> 
+                    <DeleteIcon onClick={onDelete} className="delete-btn" size={20} />
+                </div>
+            }
         </div>
     )
 
