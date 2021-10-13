@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TO DO App 
+
+Aplicação para criação e gerenciamento de tarefas que permite: 
+- Criação de tarefas em duas categorias (Pessoal e Trabalho); 
+- Mover uma tarefa de uma categoria para outra; 
+- Editar a descrição de uma tarefa; 
+- Deletar uma tarefa. 
+
+As tarefas são persistidas através do armazenamento das mesmas na LocalStorage do navegador. 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
